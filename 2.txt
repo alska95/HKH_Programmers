@@ -1,0 +1,29 @@
+¿Ï¼º
+
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String s) {
+
+        int n = s.length();
+        String targetString = "";
+        String compString = "";
+        ArrayList<String> result = new ArrayList<>();
+        for(int i = 0 ; i < n ; i++){
+            targetString += s.charAt(i);
+            compString = s.charAt(n-1-i) + compString;
+            if(targetString.equals(compString)){
+                result.add(compString);
+                targetString = "";
+                compString = "";
+            }
+        }
+
+        String[] answer = new String[result.size()];
+        for(int i = 0 ; i < result.size() ; i++){
+            answer[i] = result.get(i);
+        }
+
+        return answer;
+    }
+}

@@ -1,0 +1,30 @@
+package com.company;
+
+import java.util.*;
+
+public class Solution {
+    public int solution(String s, String t) {
+        int result = 0;
+        while(s.matches(".*"+t+".*")){
+            result++;
+            s= s.replace(t , "");
+        }
+        System.out.println(s);
+        return result;
+    }
+}
+
+
+
+public class Solution {
+    public int solution(String s, String t) {
+        int result = 0;
+        int rememberIndex = 0;
+        while((rememberIndex = s.indexOf(t))!= -1){
+            result++;
+            s = s.substring(0,rememberIndex) + s.substring(rememberIndex+t.length());
+        }
+        System.out.println(s);
+        return result;
+    }
+}

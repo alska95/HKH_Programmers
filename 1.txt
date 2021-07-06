@@ -1,0 +1,60 @@
+package com.company;
+
+
+import java.util.Arrays;
+
+
+class Solution {
+    public static void reverse(int[] array) {
+        int tmp;
+        for (int i = 0; i < array.length / 2; i++) {
+            tmp = array[i];
+            array[i] = array[(array.length - 1) - i];
+            array[(array.length - 1) - i] = tmp;
+        }
+    }
+    public int solution(int[] prices, int[] discounts) {
+
+        int answer = 0;
+        Arrays.sort(prices);
+        Arrays.sort(discounts);
+        reverse(prices);
+        reverse(discounts);
+
+        int i = 0;
+        for(;i < discounts.length && i < prices.length ; i++){
+            if(i > prices.length)
+                break;
+            answer += prices[i]/100*(100-discounts[i]);
+        }
+        for(; i < prices.length ; i++){
+            answer+= prices[i];
+        }
+
+        return answer;
+    }
+}
+
+
+
+
+import java.util.Arrays;
+
+
+class Solution {
+    public int solution(int[] prices, int[] discounts) {
+        int answer = 0;
+        Arrays.sort(prices);
+        Arrays.sort(discounts);
+        int pStart = prices.length-1;
+        int dStart = discounts.length-1;
+        while(pStart >= 0 && dStart >= 0){
+            answer += prices[pStart--]/100*(100-discounts[dStart--]);
+        }
+        while(pStart >= 0){
+            answer += prices[pStart--];
+        }
+
+        return answer;
+    }
+}
