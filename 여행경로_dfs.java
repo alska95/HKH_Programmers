@@ -68,6 +68,7 @@ class Solution {
                         tmp.add(route.get(j));
                     }
                     // route.clear();
+                    // 바로 넣으면 주소값 박힘.
                     resultSet.add(tmp);
                     return;
                 }
